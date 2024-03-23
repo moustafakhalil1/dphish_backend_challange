@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title></title>
+
+</head>
+<!-- Log on to codeastro.com for more projects -->
+<body>
+    {% for message in messages %}
+    
+    <div class="alert alert-success">
+        <a class="close" href="/" data-dismiss="alert">×</a>
+           {{ message }}
+    </div>
+
+   {% endfor %}
+    <div>
+        <div>
+         <form method="post">
+            {% csrf_token %}
+            {{form}}
+            <input type="submit" value="submit">
+        </form>
+        <h2>Results:</h2>
+        {% if ip_results %}
+            <ul>
+                {% for ip, result in ip_results.items %}
+                    <li>{{ ip }} - {{ result }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+        </div>
+    </div>
+
+</body>
+
+</html>
